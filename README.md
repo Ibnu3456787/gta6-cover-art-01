@@ -1,5 +1,9 @@
 # Vice Cover Studio — GTA-style cover art maker
 
+[![make.fun · gta6-cover-art-01](https://make.fun/badge/gta6-cover-art-01.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![rank](https://make.fun/badge/gta6-cover-art-01/Ibnu3456787/gta6-cover-art-01/rank.svg)](https://make.fun/bounty/gta6-cover-art-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![reward](https://make.fun/badge/gta6-cover-art-01/Ibnu3456787/gta6-cover-art-01/reward.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+
 Turn your photos and a caption into multi-panel GTA-style cover art with a
 Vice City sunset or neon grade — offline, free, no upload, no watermark.
 Export a PNG in 1080×1080, 1080×1350 or 1920×1080 in three steps: load a

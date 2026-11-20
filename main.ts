@@ -11,7 +11,7 @@
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 // Try the app first with `node serve.ts`, then open http://localhost:8080.
 
-import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-app.ts';
@@ -20,8 +20,14 @@ const repoRoot = fileURLToPath(new URL('.', import.meta.url));
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
 // Start from a clean slate so a stale file can never leak into the dossier.
-rmSync(outDir, { recursive: true, force: true });
+// Clear only the directory's CONTENTS, never the directory itself: in the
+// grader /output is a volume mount on a read-only root filesystem and the
+// program runs as uid 65534, so removing the mount point itself throws
+// EACCES (force: true suppresses only ENOENT) and the run exits 1.
 mkdirSync(outDir, { recursive: true });
+for (const entry of readdirSync(outDir)) {
+  rmSync(join(outDir, entry), { recursive: true, force: true });
+}
 cpSync(join(repoRoot, 'app'), join(outDir, 'app'), { recursive: true });
 mkdirSync(join(outDir, 'screenshots'), { recursive: true });
 if (existsSync(join(repoRoot, 'screenshots'))) {
